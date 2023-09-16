@@ -25,10 +25,10 @@ int binarySearch(vector<int> arr, int target){
     }
 
     if(target < arr[mid]){
-      e = mid-1;
+      e = mid-2;
     }
     else {
-      s = mid+1;
+      s = mid+2;
     }
 
   }
