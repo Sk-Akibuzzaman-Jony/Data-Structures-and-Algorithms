@@ -35,9 +35,29 @@ int solveTab(vector<int> wt, vector<int> val, int W, int n){
 	}
 	return dp[0][W];
 }
+
+// space-optimized
+int solveSO(vector<int> wt, vector<int> val, int W, int n){
+	vector<int> next(W+1, 0);
+	vector<int> curr(W+1, 0);
+
+	for(int i = n-1; i >= 0; i--){
+		for(int j = 0; j <= W; j++){
+			int include = INT_MIN;
+			if (wt[i] <= j){
+				include = val[i] + next[j-wt[i]];
+			}
+			int exclude = next[j];
+			
+			curr[j] = max(include, exclude);
+		}
+		next = curr;
+	}
+	return curr[W];
+}
     
 int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight) 
 {
 	vector<vector<int>> dp(n+1, vector<int>(maxWeight+1, -1));
-	return solveTab(weight, value, maxWeight, n);
+	return solveSO(weight, value, maxWeight, n);
 }
