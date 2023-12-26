@@ -41,6 +41,16 @@ class Graph{
     }
     cout << endl;
   }
+  
+  void dfs(int src, unordered_map<int, bool>& visited){
+      cout << src << " ";
+      visited[src] = true;
+      
+      for(auto neighbour : adjList[src]){
+          if(!visited[neighbour])
+            dfs(neighbour, visited);
+      }
+  }
 };
 
 int main() {
@@ -62,10 +72,14 @@ int main() {
           g1.bfs(i, visited);
       }
   }
-  
+  cout << endl;
+  cout << "DFS --> " << endl;
+  unordered_map<int, bool> visited2;
+  for(int i = 0; i <= 7; i++){
+      if(!visited2[i]){
+          g1.bfs(i, visited2);
+      }
+  }
 
   return 0;
 }
-// output
-// 0 1 2 
-// 3 5 7 6 4 
