@@ -1,5 +1,6 @@
 // cycle detection in an undirected graph
 // applicable for both connected and disconned
+// using BFS
 
 // https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/0
 
